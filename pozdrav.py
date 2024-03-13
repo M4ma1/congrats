@@ -16,14 +16,13 @@ def run(argv):
     wishes = open(argv[1], "r").read()
     mobiles = json.load(open(argv[2], "r"))
     print(mobiles)
-    # copy_path(argv[0])
 
-    # date_entry = input('Enter a date in YYYY-MM-DD format: ')
-    # year, month, day = map(int, date_entry.split('-'))
-    # date1 = datetime.date(year, month, day)
+    date_entry = input('Enter a date in YYYY-MM-DD format: ')
+    year, month, day = map(int, date_entry.split('-'))
+    date1 = datetime.date(year, month, day)
 
     while True:
-        if datetime.date.today() == datetime.date.today():
+        if datetime.date.today() == date1:
             for name in mobiles:
                 print(f"saying hi to {name}")
                 send_photo(photo, f"Dear {name} \n" + wishes, mobiles[name])
@@ -35,7 +34,4 @@ def run(argv):
 if __name__ == "__main__":
     if len(sys.argv) < 4:
         exit("USAGE: <photo> <wishes> <contacts>")
-    run(sys.argv[1:])
-
-
-# env QT_QPA_PLATFORM=xcb copyq                                                                    
+    run(sys.argv[1:])                                                                    
